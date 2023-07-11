@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%thread] %-8marker %-5level %logger{36} - %msg%n"/>
+    </Console>
+    <File name="SECURITY-FILE" fileName="securityFile.log">
+      <Filters>
+        <MarkerFilter marker="SECURITY" onMatch="ACCEPT" onMismatch="DENY"/>
+      </Filters>
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%thread] %-8marker %-5level %logger{36} - %msg%n"/>
+    </File>
+  </Appenders>
+
+  <Loggers>
+    <Root level="WARN">
+      <AppenderRef ref="Console"/>
+      <AppenderRef ref="SECURITY-FILE"/>
+    </Root>
+  </Loggers>
+</Configuration>
